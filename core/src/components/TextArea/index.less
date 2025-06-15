@@ -1,10 +1,11 @@
-@md-editor:~ "w-md-editor";
+@md-editor: ~ "w-md-editor";
 
 .@{md-editor} {
   &-area {
     overflow: auto;
     border-radius: 5px;
   }
+
   &-text {
     min-height: 100%;
     position: relative;
@@ -18,9 +19,10 @@
     font-size: 14px !important;
     line-height: 18px !important;
     font-variant-ligatures: common-ligatures;
+
     &-pre,
     &-input,
-    & > &-pre {
+    &>&-pre {
       margin: 0;
       border: 0;
       background: none;
@@ -44,18 +46,21 @@
       word-break: normal;
       padding: 0;
     }
+
     &-pre {
       position: relative;
       margin: 0px !important;
       pointer-events: none;
       background-color: transparent !important;
-      > code {
+
+      >code {
         padding: 0 !important;
         font-family: var(--md-editor-font-family) !important;
         font-size: 14px !important;
         line-height: 18px !important;
       }
     }
+
     &-input {
       position: absolute;
       top: 0px;
@@ -69,10 +74,12 @@
       padding: inherit;
       -webkit-font-smoothing: antialiased;
       -webkit-text-fill-color: transparent;
+
       &:empty {
         -webkit-text-fill-color: inherit !important;
       }
     }
+
     &-pre,
     &-input {
       word-wrap: pre;
@@ -81,20 +88,16 @@
     }
   }
 }
-/**
- * Hack to apply on some CSS on IE10 and IE11
- */
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  /**
-    * IE doesn't support '-webkit-text-fill-color'
-    * So we use 'color: transparent' to make the text transparent on IE
-    * Unlike other browsers, it doesn't affect caret color in IE
-    */
+
+/* Modern approach for high contrast modes */
+@media (forced-colors: active) {
   .@{md-editor}-text-input {
-    color: transparent !important;
-    &::selection {
-      background-color: #accef7 !important;
-      color: transparent !important;
+    /* Handle high contrast mode specific styling */
+    forced-color-adjust: none;
+
+    selection {
+      background-color: Highlight !important;
+      color: HighlightText !important;
     }
   }
 }
@@ -103,27 +106,34 @@
   .punctuation {
     color: var(--color-prettylights-syntax-comment, #8b949e) !important;
   }
+
   .token.url,
   .token.content {
     color: var(--color-prettylights-syntax-constant, #0550ae) !important;
   }
+
   .token.title.important {
     color: var(--color-prettylights-syntax-markup-bold, #24292f);
   }
+
   .token.code-block .function {
     color: var(--color-prettylights-syntax-entity, #8250df);
   }
+
   .token.bold {
     font-weight: unset !important;
   }
+
   .token.title {
     line-height: unset !important;
     font-size: unset !important;
     font-weight: unset !important;
   }
+
   .token.code.keyword {
     color: var(--color-prettylights-syntax-constant, #0550ae) !important;
   }
+
   .token.strike,
   .token.strike .content {
     color: var(--color-prettylights-syntax-markup-deleted-text, #82071e) !important;
