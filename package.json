@@ -1,5 +1,6 @@
 {
-  "private": true,
+  "name": "react-md-editor2",
+  "private": false,
   "scripts": {
     "⬇️⬇️⬇️⬇️⬇️ package ⬇️⬇️⬇️⬇️⬇️": "▼▼▼▼▼ package ▼▼▼▼▼",
     "watch": "npm run-script watch --workspace @uiw/react-md-editor",
@@ -17,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/uiwjs/react-md-editor"
+    "url": "git+https://github.com/Stiff-Rock/react-md-editor.git"
   },
   "license": "MIT",
   "devDependencies": {
